@@ -2,19 +2,24 @@ generated: '2026-07-19'
 method: probed
 source: live probes of https://www.feld.energy/.well-known/*
 host: https://www.feld.energy
-note: >-
-  No .well-known discovery documents are published. Requests to the apex
-  (feld.energy) 301-redirect to www; the www targets return 404. feld.energy is
-  an Agri-PV project developer with no public developer API, OAuth server, or
-  agent-plugin surface. Recorded as verified-absent (a valid, expected result).
-documents:
-- path: /.well-known/security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/oauth-authorization-server
-  status: 404
-- path: /.well-known/api-catalog
-  status: 404
-- path: /.well-known/ai-plugin.json
-  status: 404
+note: No .well-known discovery documents are published. Requests to the apex (feld.energy) 301-redirect
+  to www; the www targets return 404. feld.energy is an Agri-PV project developer with no public developer
+  API, OAuth server, or agent-plugin surface. Recorded as verified-absent (a valid, expected result).
+hosts:
+- host: https://www.feld.energy
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
